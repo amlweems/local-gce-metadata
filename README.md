@@ -48,7 +48,16 @@ Usage of /local-gce-metadata:
     	service account bearer token
 ```
 
-As shown above, in order to use this tool, you'll need a bearer token to serve. Assuming you have such a token, you can run the server as follows:
+As shown above, in order to use this tool, you'll need a bearer token to serve.
+If you want to test this and have already authenticated to Google via `gcloud
+auth login`, you can get your own token via the following command:
+
+```bash
+$ sqlite3 ~/.config/gcloud/access_tokens.db 'SELECT access_token FROM access_tokens LIMIT 1;'
+ya29.xyz...
+```
+
+Assuming you have such a token, you can run the server as follows:
 
 ```bash
 $ docker run --rm -p 80:80 local-gce-metadata -token ya29.xyz...
